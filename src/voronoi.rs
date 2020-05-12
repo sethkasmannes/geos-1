@@ -24,7 +24,8 @@ pub fn compute_voronoi<T: Borrow<Point<f64>>>(
             gc.0.into_iter()
                 .map(|g| {
                     g.into_polygon()
-                        .ok_or(Error::ConversionError("invalid inner geometry type".into()))
+                        .ok_or(Error::ConversionError("invalid inner geometry type".into())
+                    )
                 })
                 .collect()
         })
