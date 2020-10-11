@@ -990,7 +990,7 @@ impl<'a> Geometry<'a> {
     ///
     /// assert_eq!(union_geom.to_wkt_precision(1).unwrap(), "MULTIPOINT (1.0 2.0, 3.0 4.0)");
     /// ```
-    pub fn union(&self, other: &Geometry<'a>) -> GResult<Geometry<'a>> {
+    pub fn union<'b>(&self, other: &Geometry<'b>) -> GResult<Geometry<'a>> {
         unsafe {
             let ptr = GEOSUnion_r(self.get_raw_context(), self.as_raw(), other.as_raw());
             Geometry::new_from_raw(ptr, self.clone_context(), "union")
